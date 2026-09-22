@@ -67,3 +67,30 @@ export async function GET(request: Request) {
   });
 }
 ```
+
+## Development
+
+```bash
+pnpm install
+pnpm run type-check   # tsc --noEmit
+pnpm run test          # vitest run
+pnpm run build          # tsup
+```
+
+## Contributing
+
+Before committing, changes are checked with `pnpm run type-check`. This is
+wired up two ways — pick whichever fits your setup:
+
+- **Husky (npm-idiomatic, default for contributors who run `pnpm install`)**:
+  the `prepare` script installs a Husky hook automatically, so once you've run
+  `pnpm install` in a git checkout, `git commit` runs the check for you.
+- **`.githooks/` (portable, no Husky/Node required to install)**: run
+  `git config core.hooksPath .githooks` once to point git directly at the
+  checked-in `.githooks/pre-commit` script, which runs the same check.
+
+Both hooks run the same command, so pick one — you don't need both active at
+once.
+
+CI (`.github/workflows/ci.yml`) runs `type-check`, `test`, and `build` on
+every push to `main` and on every pull request.

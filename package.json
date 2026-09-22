@@ -2,6 +2,7 @@
   "name": "@serafort/vercel-edge",
   "version": "0.1.0",
   "type": "module",
+  "packageManager": "pnpm@10.32.1",
   "description": "Vercel Edge Middleware, fast Web Crypto JWT verification, and Geo-Tenant routing for Serafort IAM.",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -21,10 +22,11 @@
   "scripts": {
     "build": "tsup",
     "type-check": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepare": "husky"
   },
   "dependencies": {
-    "@serafort/core": "link:../Javascript"
+    "@serafort/core": "github:Serafort/serafort-javascript-sdk#5a4964fc41f08754c174d29b4af73074df17a9df"
   },
   "peerDependencies": {
     "@vercel/edge": ">=1.1.0"
@@ -36,8 +38,14 @@
   },
   "devDependencies": {
     "@vercel/edge": "^1.1.2",
+    "husky": "^9.1.7",
     "tsup": "^8.3.5",
     "typescript": "^5.7.0",
     "vitest": "^2.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@serafort/core"
+    ]
   }
 }
